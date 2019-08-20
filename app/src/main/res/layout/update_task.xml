@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="popupUpdate"
+            type="com.astronout.anotherroom.viewmodels.PopupUpdateViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:text="Input New Task"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/editInsertTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="Title"
+                android:layout_marginTop="10dp"
+                app:error="@{popupUpdate.titleError}"
+                app:binding="@{popupUpdate.title}"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:layout_marginEnd="10dp"/>
+
+            <EditText
+                android:id="@+id/editInsertDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="Description"
+                app:binding="@{popupUpdate.description}"
+                app:error="@{popupUpdate.descriptionError}"
+                android:inputType="textMultiLine"
+                android:imeOptions="actionDone"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_gravity="end">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnInsertCancel"
+                        style="?attr/borderlessButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:onClick="@{popupUpdate::clickCancel}"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="CANCEL" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnInsertSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UPDATE"
+                        android:onClick="@{popupUpdate::clickUpdate}"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:layout_centerInParent="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

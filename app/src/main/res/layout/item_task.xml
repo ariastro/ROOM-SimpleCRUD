@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemTask"
+            type="com.astronout.anotherroom.viewmodels.ItemTaskViewModel" />
+    </data>
+
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/swipeLayoutItemTask"
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        swipe:leftEdgeSwipeOffset="0dp"
+        swipe:rightEdgeSwipeOffset="0dp">
+
+        <RelativeLayout
+            android:id="@+id/bottomWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#E0E0E0"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonItemEdit"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:onClick="@{itemTask::clickEdit}"
+                android:layout_toStartOf="@+id/buttonItemDelete"
+                android:drawableStart="@drawable/ic_edit"
+                android:text="EDIT" />
+
+            <Button
+                android:id="@+id/buttonItemDelete"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{itemTask::clickDelete}"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:drawableStart="@drawable/ic_delete_forever"
+                android:text="DELETE" />
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/name_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="Dakocan Silalahi"
+                    android:text="@{itemTask.title}"/>
+
+                <TextView
+                    android:id="@+id/description_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/name_task"
+                    android:maxLines="3"
+                    android:textSize="16sp"
+                    android:text="@{itemTask.description}"
+                    android:textStyle="bold"
+                    tools:text="16.51.0007" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </com.daimajia.swipe.SwipeLayout>
+
+</layout>
